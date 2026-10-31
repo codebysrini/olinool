@@ -1,0 +1,185 @@
+# Release moolam / olinool to PyPI via Trusted Publishing (OIDC; no stored tokens).
+#
+# Shape follows the PyPA guide and the PyPI Trusted Publishing security model:
+#   * build and publish are SEPARATE jobs; only the two-step publish jobs ever
+#     hold `id-token: write`, and they run no project code;
+#   * every action is pinned to a full commit SHA (Dependabot keeps pins fresh);
+#   * no caches, no pull_request_target, no `${{ }}` interpolation inside `run:`.
+#
+# One-time setup (repository owner):
+#   pypi.org      -> Publishing -> add a pending GitHub publisher for EACH project
+#                    (moolam, olinool): owner codebysrini, repo olinool,
+#                    workflow release.yml, environment `pypi`.
+#   test.pypi.org -> same, environment `testpypi` (separate TestPyPI account).
+#   GitHub        -> Environments: `pypi` (required reviewer; deployment tags
+#                    moolam-v*, olinool-v*), `testpypi`. Ruleset: only admins may
+#                    create/update/delete tags moolam-v* and olinool-v*.
+#
+# Release order matters: moolam FIRST. olinool pins moolam==<exact>, and pip
+# cannot resolve that pin until moolam is on the index.
+#   git tag moolam-v0.1.0  && git push origin moolam-v0.1.0
+#   ...wait until https://pypi.org/project/moolam/0.1.0/ resolves...
+#   git tag olinool-v0.3.0 && git push origin olinool-v0.3.0
+#
+# Dry run: Actions -> release -> Run workflow -> choose a package. That path
+# builds the same way and publishes to TestPyPI only.
+name: release
+
+on:
+  push:
+    tags:
+      - "moolam-v*"
+      - "olinool-v*"
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package to dry-run on TestPyPI"
+        required: true
+        type: choice
+        options:
+          - moolam
+          - olinool
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and verify distributions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      package: ${{ steps.pkg.outputs.package }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0 # needed for the "tag is on main" gate
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+
+      - name: Resolve package
+        id: pkg
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          INPUT_PACKAGE: ${{ inputs.package }}
+        run: |
+          if [ "$EVENT_NAME" = "push" ]; then
+            case "$REF_NAME" in
+              moolam-v*)  pkg=moolam ;;
+              olinool-v*) pkg=olinool ;;
+              *) echo "unrecognized tag: $REF_NAME" >&2; exit 1 ;;
+            esac
+            tag_version="${REF_NAME#"$pkg"-v}"
+          else
+            case "$INPUT_PACKAGE" in
+              moolam|olinool) pkg="$INPUT_PACKAGE" ;;
+              *) echo "unrecognized package: $INPUT_PACKAGE" >&2; exit 1 ;;
+            esac
+            tag_version=""
+          fi
+          echo "package=$pkg" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$tag_version" >> "$GITHUB_OUTPUT"
+
+      - name: Gate - tag matches pyproject version
+        if: github.event_name == 'push'
+        env:
+          PKG: ${{ steps.pkg.outputs.package }}
+          TAG_VERSION: ${{ steps.pkg.outputs.tag_version }}
+        run: |
+          pkg_version=$(python -c "import sys, tomllib; print(tomllib.load(open(sys.argv[1], 'rb'))['project']['version'])" "$PKG/pyproject.toml")
+          if [ "$TAG_VERSION" != "$pkg_version" ]; then
+            echo "tag version $TAG_VERSION != pyproject version $pkg_version" >&2
+            exit 1
+          fi
+
+      - name: Gate - tagged commit is on main
+        if: github.event_name == 'push'
+        run: |
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main \
+            || { echo "tagged commit $GITHUB_SHA is not on main" >&2; exit 1; }
+
+      - name: Test from source
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest cryptography rfc8785
+          python -m pytest moolam olinool -q
+          (cd olinool && python conformance/run.py)
+
+      - name: Build sdist and wheel
+        env:
+          PKG: ${{ steps.pkg.outputs.package }}
+        run: |
+          python -m pip install build twine
+          python -m build --outdir dist "$PKG"
+          python -m twine check --strict dist/*
+
+      - name: Test the installed wheel
+        env:
+          PKG: ${{ steps.pkg.outputs.package }}
+        run: |
+          python -m venv "$RUNNER_TEMP/venv"
+          py="$RUNNER_TEMP/venv/bin/python"
+          "$py" -m pip install --upgrade pip pytest
+          # olinool pins moolam==<exact>; build moolam from this same commit so
+          # the pin resolves even before moolam is on the index.
+          python -m build --wheel --outdir "$RUNNER_TEMP/deps" moolam
+          "$py" -m pip install --find-links "$RUNNER_TEMP/deps" dist/*.whl
+          # Copy tests out of the tree so they import the INSTALLED package,
+          # not the source path the package-level conftest.py would add.
+          cp -R "$PKG/python/tests" "$RUNNER_TEMP/tests"
+          (cd "$RUNNER_TEMP" && "$py" -m pytest -q -p no:cacheprovider tests)
+          if [ "$PKG" = "olinool" ]; then
+            (cd "$RUNNER_TEMP" && "$py" -m olinool.conformance)
+          fi
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/${{ needs.build.outputs.package }}/
+    permissions:
+      id-token: write # Trusted Publishing; nothing else
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+
+  publish-testpypi:
+    name: Publish to TestPyPI (dry run)
+    needs: build
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/${{ needs.build.outputs.package }}/
+    permissions:
+      id-token: write # Trusted Publishing; nothing else
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          repository-url: https://test.pypi.org/legacy/

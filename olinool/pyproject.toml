@@ -1,0 +1,46 @@
+[project]
+name = "olinool"
+version = "0.3.0"
+description = "Delegation receipts for agent-to-agent calls: offline scope attenuation, proof-of-possession, selective disclosure, and an adversarial conformance corpus."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Srinivasan Nambi", email = "chat2srini@gmail.com" }]
+keywords = [
+    "agents", "delegation", "capability", "authorization", "prompt-injection",
+    "provenance", "ed25519", "jws", "sd-jwt", "a2a", "mcp",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Security :: Cryptography",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+]
+# moolam is the single crypto root shared with the TypeScript verifier's golden
+# bytes; an exact pin (not a range) is what keeps cross-verifier conformance
+# byte-for-byte. Lock-step SemVer pre-1.0: any canonicalization/signature/
+# chain/vector change is a MINOR bump in BOTH packages.
+dependencies = ["moolam==0.1.0", "cryptography>=41"]
+
+[project.urls]
+Homepage = "https://github.com/codebysrini/olinool"
+Repository = "https://github.com/codebysrini/olinool"
+Issues = "https://github.com/codebysrini/olinool/issues"
+Documentation = "https://github.com/codebysrini/olinool/blob/main/olinool/SPEC.md"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.setuptools.package-data]
+olinool = ["conformance/vectors/*.json"]

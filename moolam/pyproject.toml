@@ -1,0 +1,39 @@
+[project]
+name = "moolam"
+version = "0.1.0"
+description = "Shared Ed25519 seal-press (identities, key resolution, RFC 8785 canonical encoding, compact JWS) for the olinool agent-governance stack."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Srinivasan Nambi", email = "chat2srini@gmail.com" }]
+keywords = ["ed25519", "jws", "rfc8785", "canonical-json", "agents", "signing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Security :: Cryptography",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+]
+# Lock-step SemVer pre-1.0 with olinool: any canonicalization/signature change
+# is a MINOR bump in BOTH packages (olinool pins moolam==0.1.0 exactly —
+# golden-bytes cross-verifier conformance depends on it).
+dependencies = ["cryptography>=41", "rfc8785>=0.1.4"]
+
+[project.urls]
+Homepage = "https://github.com/codebysrini/olinool"
+Repository = "https://github.com/codebysrini/olinool"
+Issues = "https://github.com/codebysrini/olinool/issues"
+Documentation = "https://github.com/codebysrini/olinool/tree/main/moolam"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["python"]

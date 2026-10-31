@@ -1,0 +1,28 @@
+{
+  "name": "sd04_invocation_rcp_binds_combined_form",
+  "description": "same sd-1 chain + an sd-1 invocation whose rcp hashes the leaf's COMBINED presented form instead of the issuer-signed base -> \u00a716.4 preimage mismatch -> ERR_POP (regression guard: a verifier hashing the combined form would wrongly ALLOW)",
+  "keys": {
+    "did:web:acme.example": "JE817x_cDaKcNJC0GvGRcKpkxEMw-7T0P5kn318BHMw",
+    "did:web:acme.example:orchestrator": "h1kWouo3AADBSXeanQNKLtdnP0cobMp0W-GklY3KYB4",
+    "did:web:vendor.example:worker": "Ge3k5ZCp_lKUqzkapEckctqG2A-ni0iftsFwdAyE864"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K3NkLWp3dCJ9.eyJfc2QiOlsiYndER3JIREJZdzFQQ3BHQWM3NUVmVGtHcWFKYXlaWlJvcEFZazVoTzdCayJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsibmNzRGVUQndBbUFDYk4wbHNCWGtrT1djWHJKMTBaYnFPREVDZzFTNUxuQSJdLCJsZXZlbCI6MH0sImNzdCI6eyJlcG9jaCI6MCwiZXhwIjoxNzgzNDgzOTU5LCJpYXQiOjE3ODM0ODAzNTksIm1heF9kZXB0aCI6NH0sImlzcyI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicHJoIjpudWxsLCJwcmkiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZSIsInNjb3BlIjpbeyJhY3QiOiJyZWFkIiwibGltaXRzIjp7ImFtb3VudCI6NTB9LCJyZXMiOiJkYXRhc2V0cy8qIn1dLCJzdWIiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJ2IjoiMC4xIn0.v_5B9VDwEaw7Bd3V07WTq1ZEl7Df-Jz__4Jg1Av07pWYXGNNX-0VQF0xtXYERCG4us1zb-uHxKJk_qkbaq-uDw~WyJ0RUpkMTNGWXVvNlctRTR6bUREOTJRIiwicmlkIiwiMzA3YzE1NGYtMzkxOS00ZjE1LWI3OWItYTcyZjQyYTVhMTM5Il0~",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtzZC1qd3QifQ.eyJfc2QiOlsiTXlHZGFOYlN0OGlhTnJ6d2pIMmt5MW1EeURlbXV4QngxUk8zYjJCbDY0VSJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiemFoVjdrdWVmaTZ6NmVvb19BYUZXYTJPM1NYeHQ1U0Q3c3pnbXVkSWZtRSJdLCJsZXZlbCI6MH0sImF1ZCI6WyJkaWQ6d2ViOmRhdGEuZXhhbXBsZSJdLCJjc3QiOnsiZXBvY2giOjAsImV4cCI6MTc4MzQ4Mzk1OSwiaWF0IjoxNzgzNDgwMzU5LCJtYXhfZGVwdGgiOjN9LCJpc3MiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJwcmgiOiJPSzJ4R1liYUpHWVZNY1VLcVQ3SGNLanA5YW5QSE0xQXBheFVtc01qSk5nIiwicHJpIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJzY29wZSI6W3siYWN0IjoicmVhZCIsImxpbWl0cyI6eyJhbW91bnQiOjV9LCJyZXMiOiJkYXRhc2V0cy9ldS00MiJ9XSwic3ViIjoiZGlkOndlYjp2ZW5kb3IuZXhhbXBsZTp3b3JrZXIiLCJ2IjoiMC4xIn0.eJp-8CLynbiCBLbxqNTxZRGAj7rYBpfn1Y1Lnr9t4uZKgQgqg-jVYe1AzLUfeywjCXIRi6yw5YF9jhmbKOvUDA~WyJLM0UwODJ2dzVIMWZjalRTY3Vvay1BIiwicmlkIiwiZjViMDUxMDAtYThjMi00NWNmLThmYjgtMDM2YjY1NzUzMmMxIl0~"
+  ],
+  "invocation": "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6dmVuZG9yLmV4YW1wbGU6d29ya2VyIiwidHlwIjoib2xpbm9vbC1pbnZvY2F0aW9uK3NkLWp3dCJ9.eyJhdWQiOiJkaWQ6d2ViOmRhdGEuZXhhbXBsZSIsImlhdCI6MTc4MzQ4MDM1OSwibm5jIjoic2QxLWludi1jb21iaW5lZCIsInJjcCI6ImpMQm90T3Y3WWFoQWtTVEhNUkpCYVQ5VG9CT2xEMUE5SEc0SGxGRXhtWDQiLCJyZXEiOiJ1b0VESzMxSDlCNThMTnEwR1ZlSEhhU3dESHVqb3RVR2lPLWNsRVRZR2ZVIiwic3ViIjoiZGlkOndlYjp2ZW5kb3IuZXhhbXBsZTp3b3JrZXIiLCJ0eXAiOiJvbGlub29sLWludm9jYXRpb24ifQ.hVenzoiYPLEqaye7jIZDHCQQM3XRpjTNlT-Fu3bL2woSLGQubNwnEk6-QtWIng5ZIogoUKzn-WHdEJ3n-4D8DA~",
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783480359,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": false,
+    "error": "ERR_POP"
+  }
+}

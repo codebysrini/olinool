@@ -1,0 +1,14 @@
+{
+  "raw": "results/raw_ollama_qwen2.5-3b_n50.jsonl",
+  "judge_model": "llama3.1:8b",
+  "n_per_cond": {
+    "A": 50,
+    "B": 50
+  },
+  "A_string_mean": 0.88,
+  "A_judge_mean": 1.0,
+  "B_string_mean": 1.0,
+  "B_judge_mean": 1.0,
+  "string_B_minus_A": 0.12,
+  "judge_B_minus_A": 0.0
+}

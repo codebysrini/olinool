@@ -1,0 +1,20 @@
+[project]
+name = "olinool-mcp"
+version = "0.1.0"
+description = "Single-agent middleware wedge: signed, scoped, replay-proof tool calls via olinool receipts (mint-on-egress / verify-on-ingress)."
+requires-python = ">=3.10"
+dependencies = ["olinool>=0.1", "moolam>=0.1"]
+
+# The MCP Extensions binding (olinool_mcp.mcp_ext) is OPTIONAL. The core wedge
+# stays dependency-pure; `pip install olinool-mcp[mcp]` adds the official SDK
+# for callers who want typed CallTool params/results. mcp_ext imports the SDK
+# defensively and works on plain dicts without it.
+[project.optional-dependencies]
+mcp = ["mcp>=1.0"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["python"]

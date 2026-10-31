@@ -1,0 +1,16 @@
+[project]
+name = "dabba"
+version = "0.2.0"
+description = "Portable task-state with scoped views (DAP v0.1): append-only tiers, tamper-evident seal chain, injection-resistant working views."
+requires-python = ">=3.10"
+dependencies = ["moolam>=0.1"]
+
+[project.optional-dependencies]
+governance = ["olinool>=0.1"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["python"]

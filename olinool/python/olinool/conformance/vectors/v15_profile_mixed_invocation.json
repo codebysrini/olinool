@@ -1,0 +1,29 @@
+{
+  "name": "v15_profile_mixed_invocation",
+  "description": "fully valid sd-1 chain exercised with a jws-1 invocation; both profiles allowed -> the R12 profile gate rejects the cross-profile exercise",
+  "keys": {
+    "did:web:acme.example": "EL7pxfwJGqKYuQiOAWGLuIKZ1E5OARW2OzJjFw8Sf6o",
+    "did:web:acme.example:orchestrator": "1-fdsJxG_02O39DJSK4BrUa8R4Id603IQvyNdIldz3s",
+    "did:web:vendor.example:worker": "AaC_MjuE4iJG0TfmCirJglM17zFgPa28V1HRWOZWYZQ"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K3NkLWp3dCJ9.eyJfc2QiOlsibzBnaVFick5wX19tQWx2ZHFwdFM5dUdPUk9fLXpuanF2aWxUVjczbzhPQSJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiNVpOZmtIcVN0S1RRVGFiak9vbUdfSjhGVG5pdnB4YkFwa0NzaERBRF80cyJdLCJsZXZlbCI6MH0sImNzdCI6eyJlcG9jaCI6MCwiZXhwIjoxNzgzNDcxNDM1LCJpYXQiOjE3ODM0Njc4MzUsIm1heF9kZXB0aCI6NH0sImlzcyI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicHJoIjpudWxsLCJwcmkiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZSIsInNjb3BlIjpbeyJhY3QiOiJyZWFkIiwibGltaXRzIjp7ImFtb3VudCI6NTB9LCJyZXMiOiJkYXRhc2V0cy8qIn1dLCJzdWIiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJ2IjoiMC4xIn0.muIWbhTBkWKMOLyFbeUamyGyZUHRVhap43O95B9LZSzBaqI0TlizTYejoTLGdcEu5g_muiAoswp_xU5psLnQCA~WyIxZUZYRFhiRmNvUUFETXo5YmU1aXBBIiwicmlkIiwiNDMzNmZjOTktZGVhNy00OWJmLTliMGItOWZlZjVkZGI4OGI5Il0~WyJHbHRpcGw1eVctY3RUNzR6bGZrVWl3IiwiZXZpZGVuY2UiLG51bGxd~",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtzZC1qd3QifQ.eyJfc2QiOlsiSFB6Q2VqLUlEWWlvNFVRYWdmakJHemZHRE9Od3B6ZmpvbUtpMEhNeDdBVSJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiLUY5VEFqYy1VYlVNTkJUdlhHckVzMFFBZ3B4SW5Od1UzMlpXOS1Sd0R2ayJdLCJsZXZlbCI6MH0sImF1ZCI6WyJkaWQ6d2ViOmRhdGEuZXhhbXBsZSJdLCJjc3QiOnsiZXBvY2giOjAsImV4cCI6MTc4MzQ3MTQzNSwiaWF0IjoxNzgzNDY3ODM1LCJtYXhfZGVwdGgiOjN9LCJpc3MiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJwcmgiOiJfdmUxc2FlaXZWU3Zjby10THZnVUxqVU51Q3cyOEFBcFE0Skh6dkJmSHFvIiwicHJpIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJzY29wZSI6W3siYWN0IjoicmVhZCIsImxpbWl0cyI6eyJhbW91bnQiOjV9LCJyZXMiOiJkYXRhc2V0cy9ldS00MiJ9XSwic3ViIjoiZGlkOndlYjp2ZW5kb3IuZXhhbXBsZTp3b3JrZXIiLCJ2IjoiMC4xIn0.-qTUjeg8_T4P3JDPDeSHgxp5VxVgw3YXINqEXBcg_2I6_N862OQI78lhYbpBWM81ICmh46YRIDVrhyYJOmXYDQ~WyJESGRQZnpqeFlQOWgtVWphUzJRS25RIiwicmlkIiwiYmM3YjRlOTMtMDg3OC00OTdiLThiMzQtODRlMzU5Zjk2MGI4Il0~WyItNzlrZmwzbktJVmJxSllYWUJkYUNRIiwiZXZpZGVuY2UiLG51bGxd~"
+  ],
+  "invocation": "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6dmVuZG9yLmV4YW1wbGU6d29ya2VyIiwidHlwIjoib2xpbm9vbC1pbnZvY2F0aW9uK2p3cyJ9.eyJhdWQiOiJkaWQ6d2ViOmRhdGEuZXhhbXBsZSIsImlhdCI6MTc4MzQ2NzgzNSwibm5jIjoidmVjLW5vbmNlLXAyIiwicmNwIjoicGUwMzdQRmliTFZFOUx5N0d4MEhVcXZIYzREWFBkc29oWUhudnd1dWpFUSIsInJlcSI6InVvRURLMzFIOUI1OExOcTBHVmVISGFTd0RIdWpvdFVHaU8tY2xFVFlHZlUiLCJzdWIiOiJkaWQ6d2ViOnZlbmRvci5leGFtcGxlOndvcmtlciIsInR5cCI6Im9saW5vb2wtaW52b2NhdGlvbiJ9.HZQ_XyrCwjVemmwaWaV05m_OuMgW-BRqkfjs1RPjRYMunNLPqDOgNgPVseeroi51muJ7iBvrr4Eg4VnnrJDmCw",
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783467835,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "jws-1",
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": false,
+    "error": "ERR_PROFILE_MIXED"
+  }
+}

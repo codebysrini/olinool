@@ -1,0 +1,48 @@
+
+ollama_llama3.1-8b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.84x  dq -0.140  injA 17/17  injB 0/17
+  seed 8: ratio 1.84x  dq -0.107  injA 17/17  injB 0/17
+  seed 9: ratio 1.84x  dq -0.107  injA 17/17  injB 0/17
+  => ratio mean 1.84x  range [1.84, 1.84]  dq mean -0.118  range [-0.140, -0.107]  injB range [0, 0]
+
+ollama_qwen2.5-3b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.83x  dq +0.120  injA 17/17  injB 0/17
+  seed 8: ratio 1.83x  dq +0.107  injA 17/17  injB 0/17
+  seed 9: ratio 1.83x  dq +0.113  injA 17/17  injB 0/17
+  => ratio mean 1.83x  range [1.83, 1.83]  dq mean +0.113  range [+0.107, +0.120]  injB range [0, 0]
+
+ollama_qwen2.5-7b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.84x  dq -0.120  injA 17/17  injB 11/17
+  seed 8: ratio 1.84x  dq -0.147  injA 17/17  injB 13/17
+  seed 9: ratio 1.84x  dq -0.107  injA 17/17  injB 11/17
+  => ratio mean 1.84x  range [1.84, 1.84]  dq mean -0.124  range [-0.147, -0.107]  injB range [11, 13]
+
+openai-compat_alibaba-qwen-3-32b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.83x  dq -0.080  injA 17/17  injB 0/17
+  seed 8: ratio 1.84x  dq -0.127  injA 17/17  injB 3/17
+  seed 9: ratio 1.84x  dq -0.133  injA 16/17  injB 6/17
+  => ratio mean 1.84x  range [1.83, 1.84]  dq mean -0.113  range [-0.133, -0.080]  injB range [0, 6]
+
+openai-compat_gemma-4-31b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.84x  dq -0.020  injA 0/17  injB 0/17
+  seed 8: ratio 1.84x  dq -0.033  injA 0/17  injB 0/17
+  seed 9: ratio 1.84x  dq -0.033  injA 0/17  injB 0/17
+  => ratio mean 1.84x  range [1.84, 1.84]  dq mean -0.029  range [-0.033, -0.020]  injB range [0, 0]
+
+openai-compat_gpt-oss-120b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.78x  dq -0.100  injA 0/17  injB 0/17
+  seed 8: ratio 1.77x  dq -0.047  injA 3/17  injB 0/17
+  seed 9: ratio 1.77x  dq -0.060  injA 4/17  injB 0/17
+  => ratio mean 1.78x  range [1.77, 1.78]  dq mean -0.069  range [-0.100, -0.047]  injB range [0, 0]
+
+openai-compat_meta-llama-3.1-70b  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.84x  dq -0.120  injA 17/17  injB 0/17
+  seed 8: ratio 1.84x  dq -0.173  injA 17/17  injB 0/17
+  seed 9: ratio 1.84x  dq -0.047  injA 17/17  injB 0/17
+  => ratio mean 1.84x  range [1.84, 1.84]  dq mean -0.113  range [-0.173, -0.047]  injB range [0, 0]
+
+openai-compat_meta-llama-4-scout  (3 seeds: [7, 8, 9])
+  seed 7: ratio 1.83x  dq +0.113  injA 17/17  injB 17/17
+  seed 8: ratio 1.84x  dq +0.060  injA 17/17  injB 14/17
+  seed 9: ratio 1.83x  dq +0.027  injA 17/17  injB 15/17
+  => ratio mean 1.83x  range [1.83, 1.84]  dq mean +0.067  range [+0.027, +0.113]  injB range [14, 17]

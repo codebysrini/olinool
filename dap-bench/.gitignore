@@ -1,0 +1,4 @@
+
+# reproducer kit throwaway artifacts
+.venv-reproduce/
+repro_out_*/

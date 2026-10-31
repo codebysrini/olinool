@@ -1,0 +1,28 @@
+{
+  "name": "v09_profile_not_allowed",
+  "description": "valid jws-1 chain, policy allow-list is {sd-1} only",
+  "keys": {
+    "did:web:acme.example": "vEY5OOQrwFZ-ygegeGqqfg5a8sv-V3B8KzM7XWiwM9k",
+    "did:web:acme.example:orchestrator": "xtLGf0TdQ-YvyFKzWwRFhei_b1-TNbwuDsuoIGqBsPQ",
+    "did:web:vendor.example:worker": "4gTVeRw85YACw-rcJ73qRpNqyjMWV0U5C8fAFjW55ZY"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K2p3cyJ9.eyJhc3IiOnsiZXZpZGVuY2UiOm51bGwsImxldmVsIjowfSwiY3N0Ijp7ImVwb2NoIjowLCJleHAiOjE3ODMzMTIwNTAsImlhdCI6MTc4MzMwODQ1MCwibWF4X2RlcHRoIjo0fSwiaXNzIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJwcmgiOm51bGwsInByaSI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicmlkIjoiMjJiYmM4YzktNWNjOS00NTgxLTk5NTAtOTBlMzM3MmQ0N2Y3Iiwic2NvcGUiOlt7ImFjdCI6InJlYWQiLCJsaW1pdHMiOnsiYW1vdW50Ijo1MH0sInJlcyI6ImRhdGFzZXRzLyoifV0sInN1YiI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInYiOiIwLjEifQ.OkuA6l4ftdOrkQA361lqdI5st7t8QB3WNHa-oLcb3JLCzZk6puIDAKkB2eLIi3GxudY6ExaWVlyzlm2Gia4FDA",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtqd3MifQ.eyJhc3IiOnsiZXZpZGVuY2UiOm51bGwsImxldmVsIjowfSwiYXVkIjpbImRpZDp3ZWI6ZGF0YS5leGFtcGxlIl0sImNzdCI6eyJlcG9jaCI6MCwiZXhwIjoxNzgzMzEyMDUwLCJpYXQiOjE3ODMzMDg0NTAsIm1heF9kZXB0aCI6M30sImlzcyI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInByaCI6IjdDRTN0cXZUNTBMWGdrUDYzVVBEYk9sa1JpRHpUNlhSNmk4cHVOQVFrMUUiLCJwcmkiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZSIsInJpZCI6IjgzZGU3ZjQzLTdkZWMtNGZiOS1iYTgyLWJhYjQ2ZGVlNThkNCIsInNjb3BlIjpbeyJhY3QiOiJyZWFkIiwibGltaXRzIjp7ImFtb3VudCI6NX0sInJlcyI6ImRhdGFzZXRzL2V1LTQyIn1dLCJzdWIiOiJkaWQ6d2ViOnZlbmRvci5leGFtcGxlOndvcmtlciIsInYiOiIwLjEifQ.OIlw7NAGMwqDgKXbCamEP_tZ2QN12l3KgxiZ985nNlAGLaGgbPzkxyM7qFXMiLN5ybOnw1ftBqllT4cZtS0PAA"
+  ],
+  "invocation": null,
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783308450,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": false,
+    "error": "ERR_PROFILE_NOT_ALLOWED"
+  }
+}

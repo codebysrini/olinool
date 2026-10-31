@@ -1,0 +1,100 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest cryptography rfc8785
+      - name: Test all packages
+        run: python -m pytest moolam olinool dabba olinool-mcp dap-bench -q
+      - name: Conformance corpus - olinool (reference verifier)
+        working-directory: olinool
+        run: python conformance/run.py
+      - name: Conformance corpus - dabba
+        working-directory: dabba
+        run: python conformance/run.py corpus/
+
+  typescript-verifier:
+    name: TypeScript verifier vs corpus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Certify TS verifier against the corpus
+        working-directory: typescript
+        run: |
+          npm ci
+          npm test
+
+  wheels:
+    name: Build and self-test wheels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Build and check both distributions
+        run: |
+          python -m pip install --upgrade pip build twine
+          python -m build --outdir dist moolam
+          python -m build --outdir dist olinool
+          python -m twine check --strict dist/*
+      - name: Installed-wheel self-certification
+        run: |
+          python -m venv "$RUNNER_TEMP/venv"
+          py="$RUNNER_TEMP/venv/bin/python"
+          "$py" -m pip install --upgrade pip pytest
+          "$py" -m pip install --find-links dist olinool
+          cp -R moolam/python/tests "$RUNNER_TEMP/moolam_tests"
+          cp -R olinool/python/tests "$RUNNER_TEMP/olinool_tests"
+          cd "$RUNNER_TEMP"
+          "$py" -m pytest -q -p no:cacheprovider moolam_tests olinool_tests
+          "$py" -m olinool.conformance
+
+  zizmor:
+    name: Workflow security audit (zizmor)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Audit .github/workflows
+        run: |
+          python -m pip install zizmor==1.31.1
+          zizmor --format plain .github/workflows

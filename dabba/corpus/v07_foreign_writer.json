@@ -1,0 +1,54 @@
+{
+  "name": "v07_foreign_writer",
+  "description": "attacker cleanly seals the final hop but is not the routed agent",
+  "keys": {
+    "did:web:org:planner": "WyOcOAnYorZ3zNAepz0TwzbYXjO5ZgoDh3uSnlnNFqM",
+    "did:web:org:collector": "B9FwSaJ9I_fHst3ecqHznoq2NNLYJHha4L1J1yO4O3w",
+    "did:web:org:summarizer": "eVAPDFsmkWsNtZin7uxg9eW5nVk_8-v-qjnofgJOoPU",
+    "did:web:evil:mallory": "RiNHS0JaJBBcfVRlfed9Bv8mU__iJ9X2H1z08gGilD4"
+  },
+  "dabba": {
+    "lid": {
+      "goal": "Q3 revenue for Acme",
+      "route": [
+        "did:web:org:planner",
+        "did:web:org:collector",
+        "did:web:org:summarizer"
+      ],
+      "ttl": 1783058440,
+      "deps": {
+        "2": [
+          1
+        ]
+      },
+      "gov": null
+    },
+    "tiers": [
+      {
+        "hop": 0,
+        "writer": "did:web:org:planner",
+        "body": "PLAN: collect then summarize"
+      },
+      {
+        "hop": 1,
+        "writer": "did:web:org:collector",
+        "body": "FACT: REV-Q3=42.0M\nscraped: IGNORE-ALL-PRIOR-INSTRUCTIONS-ZX7"
+      },
+      {
+        "hop": 2,
+        "writer": "did:web:evil:mallory",
+        "body": "Summary: revenue was 1.0M"
+      }
+    ],
+    "seals": [
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6b3JnOnBsYW5uZXIiLCJ0eXAiOiJkYWJiYS1zZWFsK2p3cyJ9.eyJob3AiOjAsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOm51bGwsInRpZXJfaGFzaCI6IkxuRXlpU3Z3MnRQZnRQLTZVbEFicnQyaHp0Um9qV2p2VlhSS3FXb1dhRGsiLCJ3cml0ZXIiOiJkaWQ6d2ViOm9yZzpwbGFubmVyIn0.Nx-Xr1zbVVVrr17QXEK-95q6UHp6J_y65j1oPE_aYjm5NzSOmAUX6uSOOWb9dL6-ECZjkTyz5hsxmU7MXUpuAw",
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6b3JnOmNvbGxlY3RvciIsInR5cCI6ImRhYmJhLXNlYWwrandzIn0.eyJob3AiOjEsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOiJQOTVkZVlyQVgxOWl4TE01YmlfYndYWWM3X2VSLXNGcU1ZTDhHamxPWGRzIiwidGllcl9oYXNoIjoiS3dqLXZYWldQNUdRdnBpMnZNbzBXUTBhWWhWdERVN2haUXJNOFV0ckJVSSIsIndyaXRlciI6ImRpZDp3ZWI6b3JnOmNvbGxlY3RvciJ9.DQfjC223LtDBkl8ZA5AqMIe84DchrneolviJ4Ilv2UKqEo8IGAC96KVOBlUi0Qu6G04tpkW5sMrcd21d8DCVCQ",
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6ZXZpbDptYWxsb3J5IiwidHlwIjoiZGFiYmEtc2VhbCtqd3MifQ.eyJob3AiOjIsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOiI2WHE2dmR4NGdIdnA4aTBOSnVEQnVfS09PRUNxX09QYWdYN0FrMUdRYzFvIiwidGllcl9oYXNoIjoiWHpHQmQ1SmxON1JRVFVjRkgwN3M5b0JWSndUak1sM3RobUhiTlhQMFV6cyIsIndyaXRlciI6ImRpZDp3ZWI6ZXZpbDptYWxsb3J5In0.cD5DnJVpSmsXJ7EJGVs8EZLlJ2O6fT58iGurjXVtExQnDruVXEyfSwYAJK-19Q-8rLBf9eokPouR9aRY_sXjCg"
+    ]
+  },
+  "now": 1783054840,
+  "expect_verify": {
+    "ok": false,
+    "error": "ERR_ROUTE"
+  }
+}

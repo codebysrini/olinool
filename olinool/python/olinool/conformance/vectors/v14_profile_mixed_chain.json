@@ -1,0 +1,29 @@
+{
+  "name": "v14_profile_mixed_chain",
+  "description": "hop0 jws-1, hop1 sd-1 (validly signed, prh binds hop0's exact bytes, scope/window nested \u2014 otherwise verifiable); both profiles allowed -> only the \u00a715 uniform-profile rule fires",
+  "keys": {
+    "did:web:acme.example": "EL7pxfwJGqKYuQiOAWGLuIKZ1E5OARW2OzJjFw8Sf6o",
+    "did:web:acme.example:orchestrator": "1-fdsJxG_02O39DJSK4BrUa8R4Id603IQvyNdIldz3s",
+    "did:web:vendor.example:worker": "AaC_MjuE4iJG0TfmCirJglM17zFgPa28V1HRWOZWYZQ"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K2p3cyJ9.eyJhc3IiOnsiZXZpZGVuY2UiOm51bGwsImxldmVsIjowfSwiY3N0Ijp7ImVwb2NoIjowLCJleHAiOjE3ODM0NzE0MzUsImlhdCI6MTc4MzQ2NzgzNSwibWF4X2RlcHRoIjo0fSwiaXNzIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJwcmgiOm51bGwsInByaSI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicmlkIjoiOTBlOGQ4MWQtNTM2Mi00MWQ1LTg2MTYtY2Q5MmIwZDRkOTkxIiwic2NvcGUiOlt7ImFjdCI6InJlYWQiLCJsaW1pdHMiOnsiYW1vdW50Ijo1MH0sInJlcyI6ImRhdGFzZXRzLyoifV0sInN1YiI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInYiOiIwLjEifQ.FLCFdVkPwdkcWCUn2Q6egOTHyYECWEylVGfmSlvvPv88BJoFq_1bDt3d48b3Es8xCBLedflwtSKH-jP1LC8VBg",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtzZC1qd3QifQ.eyJfc2QiOlsiNUR3Uk4zcHM3emRNaHllRzRRRWpuU2Q0T2I0OEtMMERzZkk4czVnMWtTdyJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiZHVtUGVGeEs5d3JpaHJGcHBvMml3NlZtU1FHazhTR291cDR3Wjh2ZVdvNCJdLCJsZXZlbCI6MH0sImF1ZCI6WyJkaWQ6d2ViOmRhdGEuZXhhbXBsZSJdLCJjc3QiOnsiZXBvY2giOjAsImV4cCI6MTc4MzQ2OTYzNSwiaWF0IjoxNzgzNDY3ODM1LCJtYXhfZGVwdGgiOjN9LCJpc3MiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJwcmgiOiJkUlVsTVVuaXJBNGRkajdiT2U1QV83MzFxbEN0bGhOMklTVDFIbWdXNXBFIiwicHJpIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJzY29wZSI6W3siYWN0IjoicmVhZCIsImxpbWl0cyI6eyJhbW91bnQiOjV9LCJyZXMiOiJkYXRhc2V0cy9ldS00MiJ9XSwic3ViIjoiZGlkOndlYjp2ZW5kb3IuZXhhbXBsZTp3b3JrZXIiLCJ2IjoiMC4xIn0.ktpSSIDly3vaZKn3PyL1jJS0VzfcMcGlnMhoVZxg_E0bOjLpeKV_mniDBMDhFbaYLmZomsYLaOHPDzow7FsBBA~WyJTNEJmVmI2bEFhNTZTQmJaY1ExOG9nIiwicmlkIiwiYzNkYWI4YzUtMjJkNy00ZDdkLWE5YTEtM2RiZDBhYmNlYTBkIl0~WyJBbkFDZGlUNEo1TU5NbWNtNjhsNk9nIiwiZXZpZGVuY2UiLG51bGxd~"
+  ],
+  "invocation": null,
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783467835,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "jws-1",
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": false,
+    "error": "ERR_PROFILE_MIXED"
+  }
+}

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store
+.venv/
+node_modules/
+
+# regenerable mock-bench output (rewritten every --backend mock run)
+dap-bench/results/raw_mock.jsonl
+
+# local working artifacts (never committed)
+dap-bench/B3_ECONOMICS_REVIEW_*.md

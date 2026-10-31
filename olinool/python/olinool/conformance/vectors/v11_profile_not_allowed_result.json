@@ -1,0 +1,29 @@
+{
+  "name": "v11_profile_not_allowed_result",
+  "description": "valid jws-1 result + leaf receipt, policy allow-list is {sd-1} only",
+  "keys": {
+    "did:web:acme.example": "rsLJgh05Nh7HxwuaLBFGvYC6YWfD5hUG-_BjaQa12O8",
+    "did:web:acme.example:orchestrator": "UOk-fI4pZkrs3rR3EWwjBawT2hV1STkFay1bt3SD4bY",
+    "did:web:vendor.example:worker": "N0ZZQtxuXdrX0IpTXwEtIHgEEwDdTl2jxh49Kk7Fa4Y"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K2p3cyJ9.eyJhc3IiOnsiZXZpZGVuY2UiOm51bGwsImxldmVsIjowfSwiY3N0Ijp7ImVwb2NoIjowLCJleHAiOjE3ODM0Njg3OTEsImlhdCI6MTc4MzQ2NTE5MSwibWF4X2RlcHRoIjo0fSwiaXNzIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJwcmgiOm51bGwsInByaSI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicmlkIjoiMzIxZmM1YjQtZTM1My00NDk1LTg2ZDctYWM3NzNlYmVlNTI0Iiwic2NvcGUiOlt7ImFjdCI6InJlYWQiLCJsaW1pdHMiOnsiYW1vdW50Ijo1MH0sInJlcyI6ImRhdGFzZXRzLyoifV0sInN1YiI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInYiOiIwLjEifQ.wgqTtK_8t4tAq2ObQY5OQSYVm1Yk_x9JSfGBh2rfzNhm98VNnhjpDXCE7Q_PMGVGmCfkXbQ0eB-qLmZRNrXCCA",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtqd3MifQ.eyJhc3IiOnsiZXZpZGVuY2UiOm51bGwsImxldmVsIjowfSwiYXVkIjpbImRpZDp3ZWI6ZGF0YS5leGFtcGxlIl0sImNzdCI6eyJlcG9jaCI6MCwiZXhwIjoxNzgzNDY4NzkxLCJpYXQiOjE3ODM0NjUxOTEsIm1heF9kZXB0aCI6M30sImlzcyI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInByaCI6Ik5fSTFOZG1KaVhVUXNCUXNPRUtwNW5WRVZpRmtQM1kyWmJka0VDTHFMbG8iLCJwcmkiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZSIsInJpZCI6IjEzOTg2MGEyLWY2NzYtNGY3OS04ZWM3LWZmMzAzNzlhOTI2ZSIsInNjb3BlIjpbeyJhY3QiOiJyZWFkIiwibGltaXRzIjp7ImFtb3VudCI6NX0sInJlcyI6ImRhdGFzZXRzL2V1LTQyIn1dLCJzdWIiOiJkaWQ6d2ViOnZlbmRvci5leGFtcGxlOndvcmtlciIsInYiOiIwLjEifQ.3_KgFvT5RN2NHOsu6Swr4z65BRp5xIZMKTYjZ7kolFhM4v0FAstuEsEIzF8RM9-1--8gO8NTasXhrNJLUAy_Dg"
+  ],
+  "invocation": null,
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783465191,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": false,
+    "error": "ERR_PROFILE_NOT_ALLOWED"
+  },
+  "result": "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6dmVuZG9yLmV4YW1wbGU6d29ya2VyIiwidHlwIjoib2xpbm9vbC1yZXN1bHQrandzIn0.eyJpYXQiOjE3ODM0NjUxOTEsImludiI6IkdYbUlnRUZtRnVWVldjTjI5el9yTkxHakhKSnFoeVo1anVVZ2plczJKaGMiLCJvdXQiOiItckJnX1dRYjRwUlJ4bHh5NW9ZYklPVkNnV2kweTJZREtzRURRclRVeXlnIiwicmNwIjoiUXpBVWM1M0pLMXdTZnE5dDZLTjRCQzFzdVk0VHhpNDJHb2Y4d0U3ZHd4USIsInJpZCI6ImQwNzU3MjIxLTZkZDItNGJkNy04Mjg0LTdjODY2ZTcwOWUxMiIsInN0YXR1cyI6ImNvbXBsZXRlZCIsInN1YiI6ImRpZDp3ZWI6dmVuZG9yLmV4YW1wbGU6d29ya2VyIiwidHlwIjoib2xpbm9vbC1yZXN1bHQiLCJ2IjoiMC4xIiwidmVyIjoic2VsZiJ9.cJgKRomqWXhMgUgeqapK38Tauu9j5J7BPrmblrOlpDU1pRsFj9evqQsHKdYKz9_vDSPs8rOXzqstptPMS84MCQ"
+}

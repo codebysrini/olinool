@@ -1,0 +1,62 @@
+{
+  "name": "v08_nondeclared_no_leak",
+  "description": "poison legitimately sealed in a non-input tier stays out of downstream view",
+  "keys": {
+    "did:web:org:planner": "WyOcOAnYorZ3zNAepz0TwzbYXjO5ZgoDh3uSnlnNFqM",
+    "did:web:org:collector": "B9FwSaJ9I_fHst3ecqHznoq2NNLYJHha4L1J1yO4O3w",
+    "did:web:org:summarizer": "eVAPDFsmkWsNtZin7uxg9eW5nVk_8-v-qjnofgJOoPU",
+    "did:web:evil:mallory": "RiNHS0JaJBBcfVRlfed9Bv8mU__iJ9X2H1z08gGilD4"
+  },
+  "dabba": {
+    "lid": {
+      "goal": "Q3 revenue for Acme",
+      "route": [
+        "did:web:org:planner",
+        "did:web:org:collector",
+        "did:web:org:summarizer"
+      ],
+      "ttl": 1783058440,
+      "deps": {
+        "2": [
+          1
+        ]
+      },
+      "gov": null
+    },
+    "tiers": [
+      {
+        "hop": 0,
+        "writer": "did:web:org:planner",
+        "body": "PLAN: FILLER-CANARY-QZ9 buried in the planner note"
+      },
+      {
+        "hop": 1,
+        "writer": "did:web:org:collector",
+        "body": "FACT: REV-Q3=42.0M"
+      },
+      {
+        "hop": 2,
+        "writer": "did:web:org:summarizer",
+        "body": "Summary: revenue was 42.0M"
+      }
+    ],
+    "seals": [
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6b3JnOnBsYW5uZXIiLCJ0eXAiOiJkYWJiYS1zZWFsK2p3cyJ9.eyJob3AiOjAsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOm51bGwsInRpZXJfaGFzaCI6IkFodHE3eVcydjl4REpDRzlNREN0Sk5IX0R3VWdjc0h1QnlYNFlMWHlodUkiLCJ3cml0ZXIiOiJkaWQ6d2ViOm9yZzpwbGFubmVyIn0.dMTSa0kQnRWozu0x0-6wyRDLpZw_DBbbPaSrglvBFqATrZVHQCz9DRYYesrRTD8mMljTOizCUz9eyRD_n_YrAQ",
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6b3JnOmNvbGxlY3RvciIsInR5cCI6ImRhYmJhLXNlYWwrandzIn0.eyJob3AiOjEsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOiI0NXk4NXdOWE5rckVLSkRUeHJ5MmgzUG1HME1sTjZ0RHB5dDBkQktlZk5rIiwidGllcl9oYXNoIjoiYU5PTU9XLVdBZ2JEUC1VbUZBaWotVUN1b1RfdXpnSFB1Ni10TEZMaW1JZyIsIndyaXRlciI6ImRpZDp3ZWI6b3JnOmNvbGxlY3RvciJ9.5mPc-FLWXYUW3Xl0n_ExIaxYSHUYQP8nMBwr3EscO2z_JGDHVDrmu1sCky2f5Oa9ZY2DJViR4uoGGgcpYnwYAw",
+      "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6b3JnOnN1bW1hcml6ZXIiLCJ0eXAiOiJkYWJiYS1zZWFsK2p3cyJ9.eyJob3AiOjIsImxpZF9oYXNoIjoiRjBFbm9IRndOTDluNzFVWVFPODBieFpLdGUxM0Y2ZEJ5LVVQQW1LY3pvYyIsInByZXYiOiJRWGlPWGNVd0pEeWpJM1o2MGdiTHhMRnhtZEFfcEYtYmd5ODdZLVZRMS13IiwidGllcl9oYXNoIjoiQXpFbVo3WHlMYkFmeFN4cWVZUVh6M3AzVVZqdmlBcG9fVkVhYVZKM1FBSSIsIndyaXRlciI6ImRpZDp3ZWI6b3JnOnN1bW1hcml6ZXIifQ.h2VaMdTYz8WNvSzecOaoMgkqJfBTWgRxEa8MV9TZ7Trfr47gibkkGzV05TOmDfouxKcM6rCTy0Zh0gr0M06dDA"
+    ]
+  },
+  "now": 1783054840,
+  "expect_verify": {
+    "ok": true,
+    "error": null
+  },
+  "leak": {
+    "forbidden": [
+      "FILLER-CANARY-QZ9"
+    ],
+    "hop": 2,
+    "instruction": "summarize",
+    "must_be_absent": true
+  }
+}

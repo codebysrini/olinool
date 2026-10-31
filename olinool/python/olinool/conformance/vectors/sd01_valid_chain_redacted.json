@@ -1,0 +1,28 @@
+{
+  "name": "sd01_valid_chain_redacted",
+  "description": "valid sd-1 chain; rid+asr.evidence hidden behind salted digests; evidence disclosure withheld on both hops -> still allowed (prh binds the issuer-signed base, SPEC \u00a716.4)",
+  "keys": {
+    "did:web:acme.example": "CEv1eFyITra43v1fDGX9787hjQX_X4Unwv66V7iXciE",
+    "did:web:acme.example:orchestrator": "Oai1ubRW5trwC9mwQ2reluVhKug7Zkjc2a1qlugEs3g",
+    "did:web:vendor.example:worker": "tBbQfMt_QckplW4Ear9a4Rub2mB_FR7Yg7SwuJoUufM"
+  },
+  "chain": [
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwidHlwIjoib2xpbm9vbC1yZWNlaXB0K3NkLWp3dCJ9.eyJfc2QiOlsiN1pXOGEzWVVDdGRHX2RWWlZEb3ZlN2toQnlhanN0SjBzQ3l1QVVsZnZtVSJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiVDQtWE1yakszaTNYY3ktdTZRMktIN0dXY0lLbFE4VDZJbFVOUjlHWENicyJdLCJsZXZlbCI6MH0sImNzdCI6eyJlcG9jaCI6MCwiZXhwIjoxNzgzNDcwNTIxLCJpYXQiOjE3ODM0NjY5MjEsIm1heF9kZXB0aCI6NH0sImlzcyI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlIiwicHJoIjpudWxsLCJwcmkiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZSIsInNjb3BlIjpbeyJhY3QiOiJyZWFkIiwibGltaXRzIjp7ImFtb3VudCI6NTB9LCJyZXMiOiJkYXRhc2V0cy8qIn1dLCJzdWIiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJ2IjoiMC4xIn0.HOcM20Csw-2lUg335RIys5IohNz9Ph662dIccSN1T_Q2sYSb4jaezofFDiwiOZ2L8Xu3ard8erZUYjFyoYyhDw~WyJWa2UwNWJwRmdXUGxEZ3RHUnc2WnhnIiwicmlkIiwiNTBkMzNhYzgtNzNjOC00ZjRkLTgyNDItM2U4YTVjNDVlOGNlIl0~",
+    "eyJhbGciOiJFZERTQSIsImtpZCI6ImRpZDp3ZWI6YWNtZS5leGFtcGxlOm9yY2hlc3RyYXRvciIsInR5cCI6Im9saW5vb2wtcmVjZWlwdCtzZC1qd3QifQ.eyJfc2QiOlsiSEFCaENyRkN3RENwVnhteVBzeVIzTU5TUlhGVmtyWUpUakZ4VW9GX3dUYyJdLCJfc2RfYWxnIjoic2hhLTI1NiIsImFzciI6eyJfc2QiOlsiaTdWdnNUZXR5RFZFZG9mdjZ6SmpFSWdEVGU5Zi1Pdm9tN1JsTVZYR3JLZyJdLCJsZXZlbCI6MH0sImF1ZCI6WyJkaWQ6d2ViOmRhdGEuZXhhbXBsZSJdLCJjc3QiOnsiZXBvY2giOjAsImV4cCI6MTc4MzQ3MDUyMSwiaWF0IjoxNzgzNDY2OTIxLCJtYXhfZGVwdGgiOjN9LCJpc3MiOiJkaWQ6d2ViOmFjbWUuZXhhbXBsZTpvcmNoZXN0cmF0b3IiLCJwcmgiOiJodEwwNGFhN2c0S2F4Qy1fR3pXd2RUNG5MVlZkRV9maV9venNrR1RnMTJBIiwicHJpIjoiZGlkOndlYjphY21lLmV4YW1wbGUiLCJzY29wZSI6W3siYWN0IjoicmVhZCIsImxpbWl0cyI6eyJhbW91bnQiOjV9LCJyZXMiOiJkYXRhc2V0cy9ldS00MiJ9XSwic3ViIjoiZGlkOndlYjp2ZW5kb3IuZXhhbXBsZTp3b3JrZXIiLCJ2IjoiMC4xIn0.lDl8mrWDuNUNEriXdKmHqFBaoFPvy7E52cxtQOFaF_ThBymrTgpZH-7BuFaeWbUB91HJJdyTbU_kOn6kc-kHDg~WyJFakc1WVNWaEJkYXlKM0JydkZveFhnIiwicmlkIiwiNTFiOTliNjEtZjM0Ni00Y2VhLTgwYzMtZmY3ZDU1ZmU2Njg2Il0~"
+  ],
+  "invocation": null,
+  "request_b64": "eyJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL2RhdGFzZXRzL2V1LTQyIn0",
+  "receiver_id": "did:web:data.example",
+  "policy": {
+    "now": 1783466921,
+    "min_assurance": 0,
+    "trusted_principals": null,
+    "allowed_profiles": [
+      "sd-1"
+    ]
+  },
+  "expect": {
+    "allowed": true,
+    "error": null
+  }
+}
