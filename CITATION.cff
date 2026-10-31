@@ -5,6 +5,6 @@ type: software
 authors:
   - family-names: "Nambi"
     given-names: "Srinivasan"
-    email: "chat2srini@gmail.com"
+    email: "codebysrini@gmail.com"
 license: Apache-2.0
 repository-code: "https://github.com/codebysrini/olinool"

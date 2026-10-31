@@ -2,7 +2,7 @@
 
 ## Reporting
 
-Report privately through GitHub (Security tab → "Report a vulnerability") or by email to chat2srini@gmail.com; do not open public issues for vulnerabilities. This is a pre-1.0 research prototype — no security guarantees.
+Report privately through GitHub (Security tab → "Report a vulnerability") or by email to codebysrini@gmail.com; do not open public issues for vulnerabilities. This is a pre-1.0 research prototype — no security guarantees.
 
 ## Threat model (v0.1, enforced & tested)
 

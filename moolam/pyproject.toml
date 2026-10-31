@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
-authors = [{ name = "Srinivasan Nambi", email = "chat2srini@gmail.com" }]
+authors = [{ name = "Srinivasan Nambi", email = "codebysrini@gmail.com" }]
 keywords = ["ed25519", "jws", "rfc8785", "canonical-json", "agents", "signing"]
 classifiers = [
     "Development Status :: 3 - Alpha",
